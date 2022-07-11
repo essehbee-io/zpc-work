@@ -2,6 +2,7 @@
 
 resource "aws_instance" "bar" {
   ami           = "ami-005e54dee72cc1d00" # us-west-2
+  name          = "tf-test-instance"
   instance_type = "t2.micro"
   monitoring    = false
 
