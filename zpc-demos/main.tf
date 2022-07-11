@@ -113,15 +113,3 @@ resource "aws_security_group_rule" "FireFlow_240" {
   cidr_blocks       = ["8.8.8.8/32"]
   security_group_id = aws_security_group.allow_inbound.id
 }
-
-resource "aws_security_group_rule" "ssh_open" {
-  type = "ingress"
-  from_port = "22"
-    to_port = "22"
-    protocol = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
-    security_group_id = aws_security_group.allow_inbound.id
-}
-
-#**************************AWS Part Ends*************************************
-
