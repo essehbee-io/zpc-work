@@ -5,6 +5,9 @@ resource "aws_instance" "bar" {
   name          = "tf-test-instance"
   instance_type = "t2.micro"
   monitoring    = false
+  tags = {
+    Name = "tf-test-instance"
+  }
 
   metadata_options {
       http_endpoint = "disabled"    

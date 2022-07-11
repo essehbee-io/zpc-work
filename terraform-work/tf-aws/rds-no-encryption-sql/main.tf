@@ -8,4 +8,7 @@ resource "aws_db_instance" "Test_SQLServer" {
   skip_final_snapshot  = true
   storage_encrypted    = false
   backup_retention_period = 8
+  tag = {
+    Name = "Test_SQLServer"
+  }
 }
