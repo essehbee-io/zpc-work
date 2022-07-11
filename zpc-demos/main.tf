@@ -60,7 +60,17 @@ resource "aws_security_group_rule" "example3" {
   to_port           = 22
   protocol          = "tcp"
   cidr_blocks       = ["0.0.0.0/0"]
+  security_group_id = aws_security_group.allow_inbound.id
+}
 
+resource "aws_security_group_rule" "example3" {
+  type              = "ingress"
+  from_port         = 21
+  to_port           = 21
+  protocol          = "tcp"
+  cidr_blocks       = ["0.0.0.0/0"]
+  security_group_id = aws_security_group.allow_inbound.id
+}
 
 resource "aws_security_group" "allow_inbound" {
   name        = "allow_inbound"
@@ -73,8 +83,8 @@ resource "aws_security_group" "allow_inbound" {
 }
 resource "aws_security_group_rule" "FireFlow_221" {
   type              = "ingress"
-  from_port         = "856"
-  to_port           = "856"
+  from_port         = "8566"
+  to_port           = "8566"
   protocol          = "tcp"
   cidr_blocks       = ["8.8.8.8/32"]
   security_group_id = aws_security_group.allow_inbound.id
@@ -89,8 +99,8 @@ resource "aws_security_group_rule" "FireFlow_227" {
 }
 resource "aws_security_group_rule" "FireFlow_230" {
   type              = "ingress"
-  from_port         = "2412"
-  to_port           = "2412"
+  from_port         = "2411"
+  to_port           = "2411"
   protocol          = "tcp"
   cidr_blocks       = ["7.5.6.3/32"]
   security_group_id = aws_security_group.allow_inbound.id
