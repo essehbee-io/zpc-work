@@ -2,6 +2,7 @@
 
 resource "aws_s3_bucket" "violations3" {
   name = "essehbee_sb_01_public"
+  acl = "private"
 }
 
 resource "aws_s3_bucket_public_access_block" "aws_s3_bucket_public_access_block" {
