@@ -38,8 +38,8 @@ resource "aws_instance" "example1" {
 
 resource "aws_security_group_rule" "example" {
   type              = "ingress"
-  from_port         = 56
-  to_port           = 56
+  from_port         = 53
+  to_port           = 53
   protocol          = "tcp"
   cidr_blocks       = ["0.0.0.0/0"]
   security_group_id = aws_security_group.allow_inbound.id
@@ -47,13 +47,19 @@ resource "aws_security_group_rule" "example" {
 
 resource "aws_security_group_rule" "example2" {
   type              = "ingress"
-  from_port         = 80
-  to_port           = 80
+  from_port         = 3389
+  to_port           = 3389
   protocol          = "tcp"
   cidr_blocks       = ["0.0.0.0/0"]
   security_group_id = aws_security_group.allow_inbound.id
 }
 
+resource "aws_security_group_rule" "example3" {
+  type              = "ingress"
+  from_port         = 22
+  to_port           = 22
+  protocol          = "tcp"
+  cidr_blocks       = ["0.0.0.0/0"]
 
 
 resource "aws_security_group" "allow_inbound" {
