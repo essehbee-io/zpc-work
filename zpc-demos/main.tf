@@ -126,6 +126,6 @@ resource "aws_security_group_rule" "FireFlow_240" {
   from_port         = "40"
   to_port           = "40"
   protocol          = "tcp"
-  cidr_blocks       = ["8.8.8.8/32"]
+  cidr_blocks       = ["0.0.0.0/0"]
   security_group_id = aws_security_group.allow_inbound.id
 }
