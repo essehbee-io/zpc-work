@@ -63,6 +63,15 @@ resource "aws_security_group_rule" "example3" {
   security_group_id = aws_security_group.allow_inbound.id
 }
 
+resource "aws_security_group_rule" "example3" {
+  type              = "ingress"
+  from_port         = 21
+  to_port           = 21
+  protocol          = "tcp"
+  cidr_blocks       = ["0.0.0.0/0"]
+  security_group_id = aws_security_group.allow_inbound.id
+}
+
 resource "aws_security_group" "allow_inbound" {
   name        = "allow_inbound"
   description = "Allow inbound traffic"
