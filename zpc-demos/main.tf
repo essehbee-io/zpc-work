@@ -99,8 +99,8 @@ resource "aws_security_group_rule" "FireFlow_227" {
 }
 resource "aws_security_group_rule" "FireFlow_230" {
   type              = "ingress"
-  from_port         = "2412"
-  to_port           = "2412"
+  from_port         = "2411"
+  to_port           = "2411"
   protocol          = "tcp"
   cidr_blocks       = ["7.5.6.3/32"]
   security_group_id = aws_security_group.allow_inbound.id
