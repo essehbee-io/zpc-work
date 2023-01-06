@@ -1,0 +1,39 @@
+---
+AWSTemplateFormatVersion: '2010-09-09'
+Description: 'Creates a public S3 bucket and two EC2 instances with public IPs and non-encrypted disks'
+
+Resources:
+  S3Bucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      AccessControl: PublicRead
+
+myEC2Instance:
+  Type: AWS::EC2::Instance
+  Properties:
+    KeyName: zscaner-key
+    DisableApiTermination: true
+    ImageId: ami-123456
+    InstanceType: t2.micro
+    Monitoring: false
+    SecurityGroupIds:
+        - !GetAtt "SecurityGroup1.GroupId"
+    UserData: 
+      #!/bin/bash -ex
+      # put your script here
+    NetworkInterfaces:
+        - AssociatePublicIpAddress: true
+          DeviceIndex: 0
+    Tags:
+      - Key: Name
+        Value: zscanner-test
+
+  SecurityGroup1:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: Allow all inbound traffic
+      SecurityGroupIngress:
+        - CidrIp: 0.0.0.0/0
+          FromPort: 0
+          IpProtocol: -1
+          ToPort: 65535
